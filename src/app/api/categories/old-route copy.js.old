@@ -1,0 +1,96 @@
+// pages/api/categories.js
+
+import { NextResponse } from "next/server";
+import { v4 as uuidv4 } from "uuid";
+
+export let categories = [
+  {
+    id: "category-1",
+    title: "Category 1",
+    order: 1,
+    isVisible: true,
+    isReadonly: false,
+  },
+  {
+    id: "category-2",
+    title: "Category 2",
+    order: 2,
+    isVisible: true,
+    isReadonly: false,
+  },
+  {
+    id: "category-3",
+    title: "Category 3",
+    order: 3,
+    isVisible: false,
+    isReadonly: false,
+  },
+  { id: "other", title: "Other", order: 0, isVisible: false, isReadonly: true },
+];
+
+export async function GET(req) {
+  return NextResponse.json(categories);
+}
+
+export async function DELETE(req) {
+  const searchParams = req.nextUrl.searchParams;
+  const id = searchParams.get("id");
+  categories = categories.filter((category) => category.id !== id);
+  return NextResponse.json({ message: "Category deleted successfully" });
+}
+
+export async function POST(req) {
+  const { title, isVisible, isReadonly } = await req.json();
+  const newCategory = {
+    id: uuidv4(),
+    title,
+    order: categories.length,
+    isVisible,
+    isReadonly,
+  };
+  categories.push(newCategory);
+
+  return NextResponse.json({
+    message: "Category added successfully",
+    newCategory,
+  });
+}
+
+export async function PUT(req) {
+  const newOrder = await req.json();
+
+  if (!Array.isArray(newOrder) || newOrder.length !== categories.length) {
+    return NextResponse.json(
+      { message: "Invalid category order data" },
+      { status: 400 }
+    );
+  }
+
+  categories = newOrder.map((categoryId, index) => ({
+    ...categories.find((category) => category.id === categoryId),
+    order: index,
+  }));
+
+  return NextResponse.json({
+    message: "Category order updated successfully",
+    updatedCategories: categories,
+  });
+}
+
+export async function PATCH(req) {
+  const searchParams = req.nextUrl.searchParams;
+  const id = searchParams.get("id");
+  const updatedCategory = categories.find((category) => category.id === id);
+  if (!updatedCategory) {
+    return NextResponse.json(
+      { message: "Invalid category id" },
+      { status: 400 }
+    );
+  }
+
+  updatedCategory.isVisible = !updatedCategory.isVisible;
+  return NextResponse.json({
+    message: "Category visibility updated successfully",
+    updatedCategory,
+  });
+}
