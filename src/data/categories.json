@@ -1,45 +1,72 @@
-export let categories = [
+[
   {
-    id: "category-1",
-    title: "Category 1",
-    order: 1,
-    isVisible: true,
-    isReadonly: false,
+    "id": "category-1",
+    "title": "Real Category 1",
+    "order": 1,
+    "isVisible": true,
+    "isReadonly": false
   },
   {
-    id: "category-2",
-    title: "Category 2",
-    order: 2,
-    isVisible: true,
-    isReadonly: false,
+    "id": "category-2",
+    "title": "Real Category 2",
+    "order": 2,
+    "isVisible": true,
+    "isReadonly": false
   },
   {
-    id: "category-3",
-    title: "Category 3",
-    order: 3,
-    isVisible: false,
-    isReadonly: false,
+    "id": "category-4",
+    "title": "Real Category 4",
+    "order": 4,
+    "isVisible": true,
+    "isReadonly": false
   },
   {
-    id: "category-4",
-    title: "Category 4",
-    order: 6,
-    isVisible: true,
-    isReadonly: false,
+    "id": "category-5",
+    "title": "Real Category 5",
+    "order": 5,
+    "isVisible": true,
+    "isReadonly": false
   },
   {
-    id: "category-5",
-    title: "Category 5",
-    order: 7,
-    isVisible: true,
-    isReadonly: false,
+    "id": "category-6",
+    "title": "Real Category 6",
+    "order": 6,
+    "isVisible": false,
+    "isReadonly": false
   },
   {
-    id: "category-7",
-    title: "Category 7",
-    order: 8,
-    isVisible: false,
-    isReadonly: false,
+    "id": "category-7",
+    "title": "Real Category 7",
+    "order": 7,
+    "isVisible": true,
+    "isReadonly": false
   },
-  { id: "other", title: "Other", order: 0, isVisible: false, isReadonly: true },
-];
+  {
+    "id": "category-8",
+    "title": "Real Category 8",
+    "order": 8,
+    "isVisible": true,
+    "isReadonly": false
+  },
+  {
+    "id": "category-9",
+    "title": "Real Category 9",
+    "order": 9,
+    "isVisible": false,
+    "isReadonly": false
+  },
+  {
+    "id": "category-10",
+    "title": "Real Category 10",
+    "order": 10,
+    "isVisible": true,
+    "isReadonly": false
+  },
+  {
+    "id": "other",
+    "title": "Other",
+    "order": 0,
+    "isVisible": false,
+    "isReadonly": true
+  }
+]
