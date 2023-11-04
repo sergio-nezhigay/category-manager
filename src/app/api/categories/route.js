@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import { promises as fs } from "fs";
 import path from "path";
 
-const jsonDirectory = path.join(process.cwd(), "json");
-const dataFilePathNew = jsonDirectory + "/data.json";
+const jsonDirectory = path.join(process.cwd(), "src", "data");
+const dataFilePathNew = jsonDirectory + "/categories.json";
 
 async function readDataFromFile() {
   try {
@@ -23,12 +23,12 @@ async function writeDataToFile(data) {
     console.error("Error writing data to the file:", error);
   }
 }
-
+// initial read
 export async function GET() {
   const categories = await readDataFromFile();
   return NextResponse.json(categories);
 }
-
+// delete category
 export async function DELETE(req) {
   const searchParams = req.nextUrl.searchParams;
   const id = searchParams.get("id");
@@ -79,22 +79,22 @@ export async function DELETE(req) {
 //   });
 // }
 
-// export async function PATCH(req) {
-//   const searchParams = req.nextUrl.searchParams;
-//   const id = searchParams.get("id");
-//   const updatedCategory = categories.find((category) => category.id === id);
-//   if (!updatedCategory) {
-//     return NextResponse.json(
-//       { message: "Invalid category id" },
-//       { status: 400 }
-//     );
-//   }
+export async function PATCH(req) {
+  const searchParams = req.nextUrl.searchParams;
+  const id = searchParams.get("id");
+  const categories = await readDataFromFile();
+  const updatedCategory = categories.find((category) => category.id === id);
+  if (!updatedCategory) {
+    return NextResponse.json(
+      { message: "Invalid category id" },
+      { status: 400 }
+    );
+  }
 
-//   updatedCategory.isVisible = !updatedCategory.isVisible;
-//   writeDataToFile(categories); // Save the updated data to the file
-
-//   return NextResponse.json({
-//     message: "Category visibility updated successfully",
-//     updatedCategory,
-//   });
-// }
+  updatedCategory.isVisible = !updatedCategory.isVisible;
+  await writeDataToFile(categories);
+  return NextResponse.json({
+    message: "Category visibility updated successfully",
+    updatedCategory,
+  });
+}
