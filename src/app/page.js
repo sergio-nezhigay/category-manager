@@ -34,6 +34,7 @@ const Home = () => {
             onConfirm={() => {
               handleDeleteCategory(categoryId);
             }}
+            className="test"
           />
         );
       },
@@ -141,7 +142,7 @@ const Home = () => {
 
   return (
     <>
-      <header className="border border-transparent border-b-[#313442]">
+      <header className="fixed w-full border border-transparent border-b-[#313442]">
         <div className="container h-[76px] flex justify-between items-center gap-3  ">
           <div className="shrink">
             <Image
@@ -157,14 +158,20 @@ const Home = () => {
           <SearchForm onSubmit={setFilter} />
         </div>
       </header>
-
-      <CreateCategoryForm onSubmit={handleAddCategory} />
-      <CategoryList
-        categories={filteredCategories}
-        handleDragEnd={handleDragEnd}
-        onToggleClick={showToggleConfirmation}
-        onDeleteClick={showDeleteConfirmation}
-      />
+      <main>
+        <section className="pt-[116px]">
+          <div className="w-4/5 max-w-[638px] mx-auto">
+            <h1 className="visually-hidden">Category list</h1>
+            <CreateCategoryForm onSubmit={handleAddCategory} />
+            <CategoryList
+              categories={filteredCategories}
+              handleDragEnd={handleDragEnd}
+              onToggle={showToggleConfirmation}
+              onDelete={showDeleteConfirmation}
+            />
+          </div>
+        </section>
+      </main>
     </>
   );
 };

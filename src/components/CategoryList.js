@@ -5,14 +5,18 @@ import CategoryItem from "@/components/CategoryItem";
 export default function CategoryList({
   categories,
   handleDragEnd,
-  onToggleClick,
-  onDeleteClick,
+  onToggle,
+  onDelete,
 }) {
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <Droppable droppableId="category-list">
         {(provided) => (
-          <ul {...provided.droppableProps} ref={provided.innerRef}>
+          <ul
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            className="flex flex-col gap-3"
+          >
             {categories
               .sort((a, b) => a.order - b.order)
               .map((category, index) => (
@@ -25,15 +29,15 @@ export default function CategoryList({
                     <li
                       ref={provided.innerRef}
                       {...provided.draggableProps}
-                      className="category"
+                      className="flex justify-between items-center gap-3 bg-[#24252E] border-2 border-[#323443] rounded h-[50px] px-5"
                     >
                       <CategoryItem
                         id={category.id}
                         title={category.title}
                         isReadonly={category.isReadonly}
                         isVisible={category.isVisible}
-                        onToggle={onToggleClick}
-                        onDelete={onDeleteClick}
+                        onToggle={onToggle}
+                        onDelete={onDelete}
                         provided={provided}
                       />
                     </li>

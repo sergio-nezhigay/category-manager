@@ -1,28 +1,28 @@
 [
   {
-    "id": "category-5",
-    "title": "Real Category 5",
+    "id": "category-6",
+    "title": "Real Category 6",
     "order": 0,
     "isVisible": true,
     "isReadonly": false
   },
   {
+    "id": "c32cbe87-87a2-49b2-9669-0666b28450e5",
+    "title": "jjjj",
+    "order": 1,
+    "isVisible": false,
+    "isReadonly": false
+  },
+  {
+    "id": "category-5",
+    "title": "Real Category 5",
+    "order": 2,
+    "isVisible": false,
+    "isReadonly": false
+  },
+  {
     "id": "category-1",
     "title": "Real Category 1",
-    "order": 1,
-    "isVisible": true,
-    "isReadonly": false
-  },
-  {
-    "id": "category-6",
-    "title": "Real Category 6",
-    "order": 2,
-    "isVisible": true,
-    "isReadonly": false
-  },
-  {
-    "id": "category-7",
-    "title": "Real Category 7",
     "order": 3,
     "isVisible": true,
     "isReadonly": false
@@ -31,27 +31,48 @@
     "id": "3ca00145-468e-4b9c-aa21-662b4639ffa4",
     "title": "sdfg",
     "order": 4,
-    "isVisible": true,
+    "isVisible": false,
+    "isReadonly": false
+  },
+  {
+    "id": "42f03c3b-5281-49fe-8680-2906a23e935c",
+    "title": "sedtgwes",
+    "order": 5,
+    "isVisible": false,
     "isReadonly": false
   },
   {
     "id": "other",
     "title": "Other",
-    "order": 5,
+    "order": 6,
     "isVisible": false,
     "isReadonly": true
   },
   {
-    "id": "42f03c3b-5281-49fe-8680-2906a23e935c",
-    "title": "sedtgwes",
+    "id": "42751c6e-38ae-4fd2-9427-bd05e3dc6620",
+    "title": "xdfhgdfgdfg",
     "order": 7,
     "isVisible": false,
     "isReadonly": false
   },
   {
-    "id": "c32cbe87-87a2-49b2-9669-0666b28450e5",
-    "title": "jjjj",
+    "id": "a310d304-e78a-4f1c-adf5-30fbc3cc0761",
+    "title": "sdsdf",
+    "order": 8,
+    "isVisible": true,
+    "isReadonly": false
+  },
+  {
+    "id": "58cca0c4-efae-49b6-9dcd-b6712c0334c7",
+    "title": "uuuuu",
     "order": 9,
+    "isVisible": true,
+    "isReadonly": false
+  },
+  {
+    "id": "89795cf6-5a2d-4c1d-9a5e-4a808a09ff04",
+    "title": "66666",
+    "order": 10,
     "isVisible": false,
     "isReadonly": false
   }

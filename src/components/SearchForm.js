@@ -18,7 +18,7 @@ export default function SearchForm({ onSubmit }) {
           type="text"
           name="filter"
           placeholder="Search"
-          className="  text-sm bg-transparent placeholder-[#9b9d9f] w-full"
+          className=" caret-slay-500 text-sm bg-transparent placeholder-[#9b9d9f] w-full"
         />
         <button
           type="submit"
