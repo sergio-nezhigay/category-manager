@@ -1,29 +1,42 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useMemo } from "react";
+
+import CustomConfirm from "@/components/CustomConfirm";
 import axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import "./custom-confirm-dialog.css";
+import SearchForm from "@/components/SearchForm";
+import Image from "next/image";
+import CreateCategoryForm from "@/components/CreateCategoryForm";
+import CategoryList from "@/components/CategoryList";
+const LOGOIMG = "/images/logo.png";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
+  const [filter, setFilter] = useState("");
+
+  const filteredCategories = useMemo(
+    () =>
+      categories.filter(({ title }) =>
+        title.toLowerCase().includes(filter.toLowerCase())
+      ),
+    [filter, categories]
+  );
 
   const showDeleteConfirmation = (categoryId) => {
     confirmAlert({
-      buttons: [
-        {
-          label: "Save changes",
-          className: "save",
-          onClick: () => handleDeleteCategory(categoryId),
-        },
-        {
-          label: "Cancel",
-          className: "cancel",
-          onClick: () => {},
-        },
-      ],
+      customUI: ({ onClose }) => {
+        return (
+          <CustomConfirm
+            onClose={onClose}
+            onConfirm={() => {
+              handleDeleteCategory(categoryId);
+            }}
+          />
+        );
+      },
     });
   };
 
@@ -67,7 +80,7 @@ const Home = () => {
 
     axios
       .put(
-        "api/categories",
+        "api/categories/reorder",
         updatedCategories.map((category) => category.id)
       )
       .then((response) => {
@@ -79,7 +92,7 @@ const Home = () => {
       });
   };
 
-  const handleAddCategory = (values, { resetForm }) => {
+  const handleAddCategory = (values) => {
     axios
       .post("api/categories", {
         title: values.title,
@@ -93,7 +106,6 @@ const Home = () => {
       .catch((error) => {
         console.error("Error adding category:", error);
       });
-    resetForm();
   };
 
   const handleDeleteCategory = (categoryId) => {
@@ -114,7 +126,6 @@ const Home = () => {
     axios
       .patch(`api/categories?id=${categoryId}`)
       .then((response) => {
-        console.log("🚀 ~ file: page.js:79 ~ response:", response.data);
         const { updatedCategory } = response.data;
         const updatedCategories = categories.map((category) => {
           return category.id === updatedCategory.id
@@ -129,69 +140,32 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Categories</h1>
-      <Formik initialValues={{ title: "" }} onSubmit={handleAddCategory}>
-        <Form className="bg-slate-50">
-          <Field type="text" name="title" placeholder="Category Title" />
-          <button type="submit">Add Category</button>
-        </Form>
-      </Formik>
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="category-list">
-          {(provided) => (
-            <ul {...provided.droppableProps} ref={provided.innerRef}>
-              {categories
-                .sort((a, b) => a.order - b.order)
-                .map((category, index) => (
-                  <Draggable
-                    key={category.id}
-                    draggableId={category.id}
-                    index={index}
-                  >
-                    {(provided) => (
-                      <li
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        className="category"
-                      >
-                        <h3>{category.title}</h3>
+    <>
+      <header className="border border-transparent border-b-[#313442]">
+        <div className="container h-[76px] flex justify-between items-center gap-3  ">
+          <div className="shrink">
+            <Image
+              src={LOGOIMG}
+              width={196}
+              height={30}
+              alt="Logo"
+              priority
+              className="shrink"
+            />
+          </div>
 
-                        {!category.isReadonly && (
-                          <>
-                            <span>
-                              <p>
-                                {category.isVisible ? "visible" : "invisible"}
-                              </p>
-                              <button
-                                onClick={() =>
-                                  showDeleteConfirmation(category.id)
-                                }
-                              >
-                                Delete
-                              </button>
-                              <button
-                                onClick={() =>
-                                  showToggleConfirmation(category.id)
-                                }
-                              >
-                                Toggle visibility
-                              </button>
-                            </span>
+          <SearchForm onSubmit={setFilter} />
+        </div>
+      </header>
 
-                            <div {...provided.dragHandleProps}>DRAG AREA</div>
-                          </>
-                        )}
-                      </li>
-                    )}
-                  </Draggable>
-                ))}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-      </DragDropContext>
-    </div>
+      <CreateCategoryForm onSubmit={handleAddCategory} />
+      <CategoryList
+        categories={filteredCategories}
+        handleDragEnd={handleDragEnd}
+        onToggleClick={showToggleConfirmation}
+        onDeleteClick={showDeleteConfirmation}
+      />
+    </>
   );
 };
 
