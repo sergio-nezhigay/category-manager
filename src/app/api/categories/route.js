@@ -12,7 +12,15 @@ export async function DELETE(req) {
   const searchParams = req.nextUrl.searchParams;
   const id = searchParams.get("id");
   const categories = await fileOperations.readDataFromFile();
-  const updatedCategories = categories.filter((category) => category.id !== id);
+  const updatedCategories = categories
+    .filter((category) => category.id !== id)
+    .map((category, index) => {
+      return {
+        ...category,
+        order: category.isReadonly ? 10000 : index,
+      };
+    });
+
   await fileOperations.writeDataToFile(updatedCategories);
   return NextResponse.json({ message: "Category deleted successfully" });
 }
@@ -29,7 +37,14 @@ export async function POST(req) {
   };
   categories.push(newCategory);
   await fileOperations.writeDataToFile(
-    categories.sort((a, b) => a.order - b.order)
+    categories
+      .map((category, index) => {
+        return {
+          ...category,
+          order: category.isReadonly ? 10000 : index,
+        };
+      })
+      .sort((a, b) => a.order - b.order)
   );
 
   return NextResponse.json({
