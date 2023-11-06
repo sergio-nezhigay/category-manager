@@ -23,12 +23,14 @@ export async function POST(req) {
   const newCategory = {
     id: uuidv4(),
     title,
-    order: categories.length,
+    order: categories.length - 1,
     isVisible,
     isReadonly,
   };
   categories.push(newCategory);
-  await fileOperations.writeDataToFile(categories);
+  await fileOperations.writeDataToFile(
+    categories.sort((a, b) => a.order - b.order)
+  );
 
   return NextResponse.json({
     message: "Category added successfully",

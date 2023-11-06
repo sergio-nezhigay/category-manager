@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Modal from "react-modal";
 
+Modal.setAppElement("#root");
 const PLUSIMG = "/images/plus.svg";
 
 export default function CreateCategoryForm({ onSubmit }) {

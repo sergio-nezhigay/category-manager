@@ -20,7 +20,7 @@ export default function CategoryItem({
           <ToggleButton onToggle={() => onToggle(id)} isVisible={isVisible} />
 
           <button onClick={() => onDelete(id)}>
-            <svg class="icon" width="26" height="26">
+            <svg className="icon" width="26" height="26">
               <use href="/images/icons.svg#delete"></use>
             </svg>
           </button>
@@ -30,7 +30,7 @@ export default function CategoryItem({
         {...provided.dragHandleProps}
         className={isReadonly ? "h-0" : "w-[8px] h-[13px]"}
       >
-        <svg class="icon" width="16" height={isReadonly ? "0" : "12"}>
+        <svg className="icon" width="16" height={isReadonly ? "0" : "12"}>
           <use href="/images/icons.svg#drag"></use>
         </svg>
       </div>

@@ -56,7 +56,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={satoshi.variable}>{children}</body>
+      <body id="root" className={satoshi.variable}>
+        {children}
+      </body>
     </html>
   );
 }

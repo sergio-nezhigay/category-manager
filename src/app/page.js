@@ -11,6 +11,7 @@ import { confirmAndRun, confirmAndRunCustom } from "@/utils/confirm";
 
 import "react-confirm-alert/src/react-confirm-alert.css";
 import "../styles/custom-confirm-dialog.css";
+import moveItem from "@/utils/moveItem";
 
 const LOGOIMG = "/images/logo.png";
 
@@ -57,22 +58,19 @@ const Home = () => {
     if (!result.destination) {
       return;
     }
-    const updatedCategories = [...categories];
-    const [movedCategory] = updatedCategories.splice(result.source.index, 1);
-    updatedCategories.splice(result.destination.index, 0, movedCategory);
 
-    updatedCategories.forEach((category, index) => {
-      category.order = index;
-    });
+    const movedCatagories = moveItem(
+      result.source.index,
+      result.destination.index,
+      categories
+    );
+
     setLoading(true);
     axios
-      .put(
-        "api/categories/reorder",
-        updatedCategories.map((category) => category.id)
-      )
+      .put("api/categories/reorder", movedCatagories)
       .then((response) => {
-        const updatedCategoriesFromServer = response.data.updatedCategories;
-        setCategories(updatedCategoriesFromServer);
+        const updatedCategories = response.data.updatedCategories;
+        setCategories(updatedCategories);
       })
       .catch((error) => {
         setError("Error dragging category: " + error.message);
@@ -90,7 +88,10 @@ const Home = () => {
       })
       .then((response) => {
         const { newCategory } = response.data;
-        setCategories([...categories, newCategory]);
+        const updatedCategories = [...categories, newCategory].sort(
+          (a, b) => a.order - b.order
+        );
+        setCategories(updatedCategories);
       })
       .catch((error) => {
         setError("Error adding category: " + error.message);

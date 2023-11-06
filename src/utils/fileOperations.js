@@ -7,7 +7,8 @@ const dataFilePathNew = jsonDirectory + "/categories.json";
 const readDataFromFile = async () => {
   try {
     const fileContents = await fs.readFile(dataFilePathNew, "utf8");
-    return JSON.parse(fileContents);
+    const parsedData = JSON.parse(fileContents);
+    return parsedData;
   } catch (error) {
     console.error("Error reading data from the file2:", error);
     return [];
