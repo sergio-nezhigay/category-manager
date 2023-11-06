@@ -1,29 +1,8 @@
 [
   {
-    "id": "category-6",
-    "title": "Real Category 6",
-    "order": 0,
-    "isVisible": true,
-    "isReadonly": false
-  },
-  {
-    "id": "c32cbe87-87a2-49b2-9669-0666b28450e5",
-    "title": "jjjj",
-    "order": 1,
-    "isVisible": false,
-    "isReadonly": false
-  },
-  {
     "id": "category-5",
     "title": "Real Category 5",
     "order": 2,
-    "isVisible": false,
-    "isReadonly": false
-  },
-  {
-    "id": "category-1",
-    "title": "Real Category 1",
-    "order": 3,
     "isVisible": true,
     "isReadonly": false
   },
@@ -31,13 +10,6 @@
     "id": "3ca00145-468e-4b9c-aa21-662b4639ffa4",
     "title": "sdfg",
     "order": 4,
-    "isVisible": false,
-    "isReadonly": false
-  },
-  {
-    "id": "42f03c3b-5281-49fe-8680-2906a23e935c",
-    "title": "sedtgwes",
-    "order": 5,
     "isVisible": false,
     "isReadonly": false
   },
@@ -52,7 +24,7 @@
     "id": "42751c6e-38ae-4fd2-9427-bd05e3dc6620",
     "title": "xdfhgdfgdfg",
     "order": 7,
-    "isVisible": false,
+    "isVisible": true,
     "isReadonly": false
   },
   {
@@ -63,16 +35,37 @@
     "isReadonly": false
   },
   {
-    "id": "58cca0c4-efae-49b6-9dcd-b6712c0334c7",
-    "title": "uuuuu",
-    "order": 9,
+    "id": "89795cf6-5a2d-4c1d-9a5e-4a808a09ff04",
+    "title": "66666",
+    "order": 10,
+    "isVisible": false,
+    "isReadonly": false
+  },
+  {
+    "id": "3da94706-298d-45ab-a458-8b6592dfa04a",
+    "title": "77777",
+    "order": 11,
     "isVisible": true,
     "isReadonly": false
   },
   {
-    "id": "89795cf6-5a2d-4c1d-9a5e-4a808a09ff04",
-    "title": "66666",
+    "id": "d1a61a27-6da3-4777-875a-ef151a74669e",
+    "title": "9999",
+    "order": 11,
+    "isVisible": false,
+    "isReadonly": false
+  },
+  {
+    "id": "975c725e-3be2-4a84-bac1-c2855bf7f1f5",
+    "title": "jjjj",
     "order": 10,
+    "isVisible": false,
+    "isReadonly": false
+  },
+  {
+    "id": "ef1f4cb5-a1be-4722-9392-d59de4f0aba9",
+    "title": "8888",
+    "order": 11,
     "isVisible": false,
     "isReadonly": false
   }

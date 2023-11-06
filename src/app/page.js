@@ -1,22 +1,20 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useMemo } from "react";
-
-import CustomConfirm from "@/components/CustomConfirm";
-import axios from "axios";
-import { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css";
-import "./custom-confirm-dialog.css";
-import SearchForm from "@/components/SearchForm";
+import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
+import axios from "axios";
+import SearchForm from "@/components/SearchForm";
 import CreateCategoryForm from "@/components/CreateCategoryForm";
 import CategoryList from "@/components/CategoryList";
+import { confirmAndRun, confirmAndRunCustom } from "@/utils/confirm";
+
+import "react-confirm-alert/src/react-confirm-alert.css";
+import "../styles/custom-confirm-dialog.css";
+
 const LOGOIMG = "/images/logo.png";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("");
-
   const filteredCategories = useMemo(
     () =>
       categories.filter(({ title }) =>
@@ -25,37 +23,16 @@ const Home = () => {
     [filter, categories]
   );
 
-  const showDeleteConfirmation = (categoryId) => {
-    confirmAlert({
-      customUI: ({ onClose }) => {
-        return (
-          <CustomConfirm
-            onClose={onClose}
-            onConfirm={() => {
-              handleDeleteCategory(categoryId);
-            }}
-            className="test"
-          />
-        );
-      },
-    });
+  const onDelete = (categoryId) => {
+    confirmAndRunCustom(handleDeleteCategory, categoryId);
   };
 
-  const showToggleConfirmation = (categoryId) => {
-    confirmAlert({
-      buttons: [
-        {
-          label: "Save changes",
-          className: "save",
-          onClick: () => handleToggleVisibility(categoryId),
-        },
-        {
-          label: "Cancel",
-          className: "cancel",
-          onClick: () => {},
-        },
-      ],
-    });
+  const onToggleVisibility = (categoryId) => {
+    confirmAndRun(handleToggleVisibility, categoryId);
+  };
+
+  const onAddCategory = (values) => {
+    confirmAndRun(handleAddCategory, values);
   };
 
   useEffect(() => {
@@ -162,12 +139,12 @@ const Home = () => {
         <section className="pt-[116px]">
           <div className="w-4/5 max-w-[638px] mx-auto">
             <h1 className="visually-hidden">Category list</h1>
-            <CreateCategoryForm onSubmit={handleAddCategory} />
+            <CreateCategoryForm onSubmit={onAddCategory} />
             <CategoryList
               categories={filteredCategories}
               handleDragEnd={handleDragEnd}
-              onToggle={showToggleConfirmation}
-              onDelete={showDeleteConfirmation}
+              onToggle={onToggleVisibility}
+              onDelete={onDelete}
             />
           </div>
         </section>
