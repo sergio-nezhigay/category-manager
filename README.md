@@ -1,18 +1,20 @@
-# Category Manager
+# Category Manager 🌟
 
-Category Manager is a web application that allows users to manage categories. Users can view, add, delete, and search for categories with a user-friendly interface.
+![Category Tree Manager](/public/screenshot.jpg)
+
+Category Manager is a web application that allows users to manage categories. Users can view, add, delete, and search for categories with a user-friendly interface. 📂🔍
 
 ![Category Manager Logo](/images/logo.png)
 
-## Features
+## Features ✨
 
-- View a list of categories.
-- Add new categories.
-- Delete categories.
-- Search for categories by name.
-- Reorder categories through drag-and-drop.
+- View a list of categories 📋
+- Add new categories ➕
+- Delete categories ❌
+- Search for categories by name 🔍
+- Reorder categories through drag-and-drop 🔄
 
-## Installation and Setup
+## Installation and Setup 🛠️
 
 1. Clone the repository:
 
@@ -32,9 +34,9 @@ Category Manager is a web application that allows users to manage categories. Us
    npm run dev
    ```
 
-4. Access the application at [http://localhost:3000](http://localhost:3000)
+4. Access the application at [http://localhost:3000](http://localhost:3000) 🚀
 
-## Built With
+## Built With 🛠️
 
 Certainly! Here's a unified style for the technologies used, along with emojis for added visual appeal:
 
@@ -46,37 +48,43 @@ Certainly! Here's a unified style for the technologies used, along with emojis f
 - **@hello-pangea/dnd**: 🪄 @hello-pangea/dnd is a drag-and-drop library for creating interactive interfaces.
 - [**Tailwind CSS**](https://tailwindcss.com/): 🎨 Tailwind CSS is a utility-first CSS framework for building modern designs with ease.
 
-## Usage
+## Usage 🚀
 
-- Create, edit, and delete categories
-- Reorder categories using drag-and-drop
-- Save changes or cancel modifications
-- Basic validation ensures that a category cannot be saved with an empty name
+- Create, edit, and delete categories 📝🗑️
+- Reorder categories using drag-and-drop 🪄
+- Save changes or cancel modifications 💾❌
+- Basic validation ensures that a category cannot be saved with an empty name ⚠️
 
-## Local Data Storage
+## Local Data Storage 💾
 
-The application stores data locally in file, and it's also possible to use runtime storage for faster development.
+The application stores data locally in a file, and it's also possible to use runtime storage for faster development. 📂
 
-## API Endpoints
+## API Endpoints 🌐
 
-The project includes CRUD (Create, Read, Update, Delete) endpoints for managing categories. You can customize these endpoints as needed.
+The project includes CRUD (Create, Read, Update, Delete) endpoints for managing categories. You can customize these endpoints as needed. 🛠️
 
-- **GET** `/api/categories`: Retrieve categories.
-- **POST** `/api/categories`: Create a new category.
-- **DELETE** `/api/categories?id={categoryId}`: Delete a category.
-- **PUT** `/api/categories/reorder`: Drag and drop for reordering categories.
-- **PATCH** `/api/categories?id={categoryId}`: Toggle visibility of a category.
+- **GET** `/api/categories`: Retrieve categories 📖
+- **POST** `/api/categories`: Create a new category ➕
+- **DELETE** `/api/categories?id={categoryId}`: Delete a category ❌
+- **PUT** `/api/categories/reorder`: Drag and drop for reordering categories 🪄
+- **PATCH** `/api/categories?id={categoryId}`: Toggle visibility of a category 📝
 
-You can use these endpoints to interact with and manage categories in the application.
+You can use these endpoints to interact with and manage categories in the application. 🌐
 
-## Feedback
+## Feedback 📢
 
-Your feedback and contributions are welcome! Feel free to open issues and pull requests to improve this project.
+Your feedback and contributions are welcome! Feel free to open issues and pull requests to improve this project. 🙌
 
-## License
+## License 📜
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 📜
 
-## Acknowledgments
+## Acknowledgments 🙏
 
-- Thanks to the creators of the libraries and tools used in this project.
+- Thanks to the creators of the libraries and tools used in this project. 👏
+
+## Contact Information 📧
+
+- **Author:** Serhii Nezhyhai
+- **Email:** [abc1971h@gmail.com](mailto:abc1971h@gmail.com)
+- **Portfolio:** [https://serhii.vercel.app/](https://serhii.vercel.app/)

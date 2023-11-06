@@ -135,7 +135,7 @@ const Home = () => {
 
   return (
     <>
-      <header className="fixed w-full border border-transparent border-b-[#313442]">
+      <header className="fixed w-full border border-transparent bg-[#1e1e27] z-10 border-b-[#313442]">
         <div className="container h-[76px] flex justify-between items-center gap-3  ">
           <div className="shrink">
             <Image
