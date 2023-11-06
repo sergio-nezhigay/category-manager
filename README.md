@@ -4,8 +4,6 @@
 
 Category Manager is a web application that allows users to manage categories. Users can view, add, delete, and search for categories with a user-friendly interface. 📂🔍
 
-![Category Manager Logo](/images/logo.png)
-
 ## Features ✨
 
 - View a list of categories 📋
@@ -19,7 +17,7 @@ Category Manager is a web application that allows users to manage categories. Us
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/sergio-nezhigay/category-manager
    ```
 
 2. Install dependencies:
@@ -34,7 +32,7 @@ Category Manager is a web application that allows users to manage categories. Us
    npm run dev
    ```
 
-4. Access the application at [http://localhost:3000](http://localhost:3000) 🚀
+4. Access the application at [https://category-manager.vercel.app/](https://category-manager.vercel.app/) 🚀
 
 ## Built With 🛠️
 
@@ -51,7 +49,7 @@ Certainly! Here's a unified style for the technologies used, along with emojis f
 ## Usage 🚀
 
 - Create, edit, and delete categories 📝🗑️
-- Reorder categories using drag-and-drop 🪄
+- Reorder categories using drag-and-drop ↕️
 - Save changes or cancel modifications 💾❌
 - Basic validation ensures that a category cannot be saved with an empty name ⚠️
 
@@ -66,7 +64,7 @@ The project includes CRUD (Create, Read, Update, Delete) endpoints for managing 
 - **GET** `/api/categories`: Retrieve categories 📖
 - **POST** `/api/categories`: Create a new category ➕
 - **DELETE** `/api/categories?id={categoryId}`: Delete a category ❌
-- **PUT** `/api/categories/reorder`: Drag and drop for reordering categories 🪄
+- **PUT** `/api/categories/reorder`: Drag and drop for reordering categories ↕️
 - **PATCH** `/api/categories?id={categoryId}`: Toggle visibility of a category 📝
 
 You can use these endpoints to interact with and manage categories in the application. 🌐

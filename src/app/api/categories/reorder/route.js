@@ -12,10 +12,15 @@ export async function PUT(req) {
     );
   }
 
-  const updatedCategories = newOrder.map((categoryId, index) => ({
-    ...categories.find((category) => category.id === categoryId),
-    order: index,
-  }));
+  const updatedCategories = newOrder.map((categoryId, index) => {
+    const foundCategory = categories.find(
+      (category) => category.id === categoryId
+    );
+    return {
+      ...foundCategory,
+      order: foundCategory.isReadonly ? -1 : index,
+    };
+  });
 
   await fileOperations.writeDataToFile(updatedCategories);
 

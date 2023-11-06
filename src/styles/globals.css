@@ -16,9 +16,14 @@
   }
 }
 
-body {
-  background-color: #1e1e27;
-  color: #ffffff;
+@layer base {
+  body {
+    background-color: #1e1e27;
+    color: #ffffff;
+  }
+  * {
+    font-family: var(--font-satoshi), Arial, sans-serif;
+  }
 }
 
 @layer components {

@@ -17,9 +17,9 @@ function CustomConfirm(props) {
           props.onConfirm();
           props.onClose();
         }}
-        className="w-full h-[58px] rounded gradient-custom1 shadow-sm-custom1 font-bold transition duration-300 hover:shadow-md hover:text-[#b4b2b2]"
+        className="flex justify-center items-center gap-3 w-full h-[58px] rounded gradient-custom1 shadow-sm-custom1 font-bold transition duration-300 hover:shadow-md hover:text-[#b4b2b2]"
       >
-        Delete
+        <span>Delete</span>
       </button>
       <button
         onClick={props.onClose}

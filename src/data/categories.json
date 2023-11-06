@@ -23,7 +23,7 @@
   {
     "id": "other",
     "title": "NFT London",
-    "order": 3,
+    "order": -1,
     "isVisible": false,
     "isReadonly": true
   },
@@ -42,22 +42,22 @@
     "isReadonly": false
   },
   {
+    "id": "975c725e-3be2-4a84-bac1-c2855bf7f1f5",
+    "title": "NFT Celebration",
+    "order": 6,
+    "isVisible": false,
+    "isReadonly": false
+  },
+  {
     "id": "3da94706-298d-45ab-a458-8b6592dfa04a",
     "title": "GN",
-    "order": 6,
+    "order": 7,
     "isVisible": true,
     "isReadonly": false
   },
   {
     "id": "d1a61a27-6da3-4777-875a-ef151a74669e",
     "title": "New Year",
-    "order": 7,
-    "isVisible": false,
-    "isReadonly": false
-  },
-  {
-    "id": "975c725e-3be2-4a84-bac1-c2855bf7f1f5",
-    "title": "NFT Celebration",
     "order": 8,
     "isVisible": false,
     "isReadonly": false

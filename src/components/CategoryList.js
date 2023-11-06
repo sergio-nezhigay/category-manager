@@ -18,7 +18,7 @@ export default function CategoryList({
             className="flex flex-col gap-3"
           >
             {categories
-              .sort((a, b) => a.order - b.order)
+              .sort((a, b) => b.order - a.order)
               .map((category, index) => (
                 <Draggable
                   key={category.id}
