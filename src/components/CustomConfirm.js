@@ -17,11 +17,14 @@ function CustomConfirm(props) {
           props.onConfirm();
           props.onClose();
         }}
-        className="w-full h-[58px] rounded gradient-custom1 shadow-sm-custom1 font-bold"
+        className="w-full h-[58px] rounded gradient-custom1 shadow-sm-custom1 font-bold transition duration-300 hover:shadow-md hover:text-[#b4b2b2]"
       >
         Delete
       </button>
-      <button onClick={props.onClose} className="text-[#FF5B5B]">
+      <button
+        onClick={props.onClose}
+        className="text-[#FF5B5B] transition duration-300 hover:text-[#f9b1b1]"
+      >
         Cancel
       </button>
     </div>

@@ -20,24 +20,24 @@ export default function CreateCategoryForm({ onSubmit }) {
     <>
       <button
         onClick={openModal}
-        className="bg-[#884DFE] w-full py-4 rounded shadow-sm-custom1 flex justify-center items-center gap-[10px] mb-3"
+        className="bg-[#884DFE] w-full py-4 rounded shadow-sm-custom1 flex justify-center items-center gap-2 mb-3 transform hover:bg-[#6935BF] hover:scale-105 hover:shadow-md cursor-pointer transition duration-300"
       >
-        <div className="w-[14px] h-[14px]">
+        <div className="w-6 h-6">
           <Image
             src={PLUSIMG}
             alt="Search"
-            width={0}
-            height={0}
+            width={16}
+            height={16}
             className="w-full h-auto"
           />
         </div>
-        Create a Category
+        <span className="text-white">Create a Category</span>
       </button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Create Category Modal"
-        className="create "
+        className="create"
         overlayClassName="overlay-create"
       >
         <h2 className="text-2xl leading-6 font-medium mb-3 text-center">
@@ -63,7 +63,7 @@ export default function CreateCategoryForm({ onSubmit }) {
               type="text"
               name="title"
               placeholder="Category Title"
-              className="block w-full p-3 rounded-md text-sm bg-[#24252E] placeholder-[#9b9d9f] border border-[#323443] mb-4"
+              className="block w-full p-3 rounded-md text-sm bg-[#24252E] placeholder-[#9b9d9f] border border-[#323443] mb-4 transition duration-300 hover:bg-[#1E1F25] hover:border-[#202125]"
             />
             <ErrorMessage
               name="title"
@@ -72,7 +72,7 @@ export default function CreateCategoryForm({ onSubmit }) {
             />
             <button
               type="submit"
-              className="w-full h-[38px] rounded gradient-custom1 shadow-sm-custom1 font-bold"
+              className="w-full h-[38px] rounded gradient-custom1 shadow-sm-custom1 font-bold transition duration-300 hover:shadow-md hover:scale-105"
             >
               Add Category
             </button>
@@ -80,7 +80,7 @@ export default function CreateCategoryForm({ onSubmit }) {
         </Formik>
         <button
           onClick={closeModal}
-          className="text-[#FF5B5B] mt-3 mx-auto block"
+          className="text-[#FF5B5B] mt-3 mx-auto block cursor-pointer transition duration-300 hover:text-[#FF3B3B]"
         >
           Cancel
         </button>

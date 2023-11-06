@@ -60,3 +60,27 @@
   color: #fff;
   border: 3px solid #424454;
 }
+
+.react-confirm-alert-button-group > .save:hover {
+  background-color: #3da545;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.react-confirm-alert-button-group > .save:active {
+  background-color: #2e8a38;
+  transition: background-color 0.3s;
+}
+
+.react-confirm-alert-button-group > .cancel:hover {
+  background-color: #a7a7a7;
+  color: #424454;
+  border: 3px solid #a7a7a7;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.react-confirm-alert-button-group > .cancel:active {
+  background-color: #a7a7a7;
+  border: 3px solid #a7a7a7;
+  transition: background-color 0.3s, border-color 0.3s;
+}

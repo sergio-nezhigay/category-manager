@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import axios from "axios";
+import { BarLoader } from "react-spinners";
+
 import SearchForm from "@/components/SearchForm";
 import CreateCategoryForm from "@/components/CreateCategoryForm";
 import CategoryList from "@/components/CategoryList";
@@ -15,6 +17,9 @@ const LOGOIMG = "/images/logo.png";
 const Home = () => {
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const filteredCategories = useMemo(
     () =>
       categories.filter(({ title }) =>
@@ -36,12 +41,16 @@ const Home = () => {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await axios.get("api/categories");
-      const data = await res.data;
-      setCategories(data);
-    }
-    fetchData();
+    setLoading(true);
+    axios
+      .get("api/categories")
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        setError("Error loading categories: " + error.message);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const handleDragEnd = (result) => {
@@ -55,7 +64,7 @@ const Home = () => {
     updatedCategories.forEach((category, index) => {
       category.order = index;
     });
-
+    setLoading(true);
     axios
       .put(
         "api/categories/reorder",
@@ -66,11 +75,13 @@ const Home = () => {
         setCategories(updatedCategoriesFromServer);
       })
       .catch((error) => {
-        console.error("Error updating category order:", error);
-      });
+        setError("Error dragging category: " + error.message);
+      })
+      .finally(() => setLoading(false));
   };
 
   const handleAddCategory = (values) => {
+    setLoading(true);
     axios
       .post("api/categories", {
         title: values.title,
@@ -82,11 +93,13 @@ const Home = () => {
         setCategories([...categories, newCategory]);
       })
       .catch((error) => {
-        console.error("Error adding category:", error);
-      });
+        setError("Error adding category: " + error.message);
+      })
+      .finally(() => setLoading(false));
   };
 
   const handleDeleteCategory = (categoryId) => {
+    setLoading(true);
     axios
       .delete(`api/categories?id=${categoryId}`)
       .then(() => {
@@ -96,11 +109,13 @@ const Home = () => {
         setCategories(updatedCategories);
       })
       .catch((error) => {
-        console.error("Error deleting category:", error);
-      });
+        setError("Error deleting category: " + error.message);
+      })
+      .finally(() => setLoading(false));
   };
 
   const handleToggleVisibility = (categoryId) => {
+    setLoading(true);
     axios
       .patch(`api/categories?id=${categoryId}`)
       .then((response) => {
@@ -114,7 +129,8 @@ const Home = () => {
       })
       .catch((error) => {
         console.error("Error deleting category:", error);
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -140,12 +156,30 @@ const Home = () => {
           <div className="w-4/5 max-w-[638px] mx-auto">
             <h1 className="visually-hidden">Category list</h1>
             <CreateCategoryForm onSubmit={onAddCategory} />
-            <CategoryList
-              categories={filteredCategories}
-              handleDragEnd={handleDragEnd}
-              onToggle={onToggleVisibility}
-              onDelete={onDelete}
-            />
+            {error && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded relative mt-4">
+                {error}
+                <button
+                  onClick={() => setError(null)}
+                  className="bg-[#333] text-green-300 hover:text-green-800 focus:outline-none p-2 ml-3"
+                  aria-label="Clear Error"
+                >
+                  Clear Error
+                </button>
+              </div>
+            )}
+            {!loading ? (
+              <CategoryList
+                categories={filteredCategories}
+                handleDragEnd={handleDragEnd}
+                onToggle={onToggleVisibility}
+                onDelete={onDelete}
+              />
+            ) : (
+              <div className="flex items-center justify-center mt-10">
+                <BarLoader loading={loading} aria-label="Loading Spinner" />
+              </div>
+            )}
           </div>
         </section>
       </main>

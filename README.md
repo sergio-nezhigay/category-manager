@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Category Manager
 
-## Getting Started
+Category Manager is a web application that allows users to manage categories. Users can view, add, delete, and search for categories with a user-friendly interface.
 
-First, run the development server:
+![Category Manager Logo](/images/logo.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- View a list of categories.
+- Add new categories.
+- Delete categories.
+- Search for categories by name.
+- Reorder categories through drag-and-drop.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Installation and Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repository:
 
-## Learn More
+   ```shell
+   git clone https://github.com/yourusername/your-repo.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```shell
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Start the development server:
 
-## Deploy on Vercel
+   ```shell
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Access the application at [http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Built With
+
+Certainly! Here's a unified style for the technologies used, along with emojis for added visual appeal:
+
+- [**Next.js**](https://nextjs.org/): 🚀 Next.js is a popular framework for building fast and efficient web applications.
+- [**React**](https://reactjs.org/): ⚛️ React is a JavaScript library for building user interfaces.
+- [**formik**](https://formik.org/): 📝 Formik is a library for building forms in React with ease.
+- **react-spinners**: 🔄 React Spinners provides loading spinners and animations for your web applications.
+- **react-confirm-alert**: 🚦 React Confirm Alert is a customizable confirmation dialog library.
+- **@hello-pangea/dnd**: 🪄 @hello-pangea/dnd is a drag-and-drop library for creating interactive interfaces.
+- [**Tailwind CSS**](https://tailwindcss.com/): 🎨 Tailwind CSS is a utility-first CSS framework for building modern designs with ease.
+
+## Usage
+
+- Create, edit, and delete categories
+- Reorder categories using drag-and-drop
+- Save changes or cancel modifications
+- Basic validation ensures that a category cannot be saved with an empty name
+
+## Local Data Storage
+
+The application stores data locally in file, and it's also possible to use runtime storage for faster development.
+
+## API Endpoints
+
+The project includes CRUD (Create, Read, Update, Delete) endpoints for managing categories. You can customize these endpoints as needed.
+
+- **GET** `/api/categories`: Retrieve categories.
+- **POST** `/api/categories`: Create a new category.
+- **DELETE** `/api/categories?id={categoryId}`: Delete a category.
+- **PUT** `/api/categories/reorder`: Drag and drop for reordering categories.
+- **PATCH** `/api/categories?id={categoryId}`: Toggle visibility of a category.
+
+You can use these endpoints to interact with and manage categories in the application.
+
+## Feedback
+
+Your feedback and contributions are welcome! Feel free to open issues and pull requests to improve this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Thanks to the creators of the libraries and tools used in this project.
